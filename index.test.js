@@ -46,15 +46,22 @@ describe('[Exercise 4] Counter', () => {
 	beforeEach(() => {
 		counter = new utils.Counter(3); // each test must start with a fresh couter
 	});
-	test.todo(
-		'[6] the FIRST CALL of counter.countDown returns the initial count'
-	);
-	test.todo(
-		'[7] the SECOND CALL of counter.countDown returns the initial count minus one'
-	);
-	test.todo(
-		'[8] the count eventually reaches zero but does not go below zero'
-	);
+	test('[6] the FIRST CALL of counter.countDown returns the initial count', () => {
+		expect(counter.countDown()).toEqual(3);
+	});
+	test('[7] the SECOND CALL of counter.countDown returns the initial count minus one', () => {
+		counter.countDown();
+		expect(counter.countDown()).toEqual(2);
+	});
+	test('[8] the count eventually reaches zero but does not go below zero', () => {
+		counter.countDown();
+		counter.countDown();
+		counter.countDown();
+		counter.countDown();
+		counter.countDown();
+		counter.countDown();
+		expect(counter.countDown()).toEqual(0);
+	});
 });
 
 describe('[Exercise 5] Seasons', () => {
@@ -62,12 +69,73 @@ describe('[Exercise 5] Seasons', () => {
 	beforeEach(() => {
 		seasons = new utils.Seasons(); // each test must start with fresh seasons
 	});
-	test.todo('[9] the FIRST call of seasons.next returns "summer"');
-	test.todo('[10] the SECOND call of seasons.next returns "fall"');
-	test.todo('[11] the THIRD call of seasons.next returns "winter"');
-	test.todo('[12] the FOURTH call of seasons.next returns "spring"');
-	test.todo('[13] the FIFTH call of seasons.next returns again "summer"');
-	test.todo('[14] the 40th call of seasons.next returns "spring"');
+	test('[9] the FIRST call of seasons.next returns "summer"', () => {
+		expect(seasons.next()).toEqual('summer');
+	});
+	test('[10] the SECOND call of seasons.next returns "fall"', () => {
+		seasons.next();
+		expect(seasons.next()).toEqual('fall');
+	});
+	test('[11] the THIRD call of seasons.next returns "winter"', () => {
+		seasons.next();
+		seasons.next();
+		expect(seasons.next()).toEqual('winter');
+	});
+	test('[12] the FOURTH call of seasons.next returns "spring"', () => {
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		expect(seasons.next()).toEqual('spring');
+	});
+	test('[13] the FIFTH call of seasons.next returns again "summer"', () => {
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		expect(seasons.next()).toEqual('summer');
+	});
+	test('[14] the 40th call of seasons.next returns "spring"', () => {
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		seasons.next(); // 5
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		seasons.next(); // 10
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		seasons.next(); // 5
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		seasons.next(); // 20
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		seasons.next(); // 5
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		seasons.next(); // 30
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		seasons.next(); // 5
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		seasons.next();
+		expect(seasons.next()).toEqual('spring');
+	});
 });
 
 describe('[Exercise 6] Car', () => {
@@ -75,8 +143,10 @@ describe('[Exercise 6] Car', () => {
 	beforeEach(() => {
 		focus = new utils.Car('focus', 20, 30); // each test must start with a fresh car
 	});
-	test.todo('[15] driving the car returns the updated odometer');
-	test.todo('[16] driving the car uses gas');
+	test('[15] driving the car returns the updated odometer', () => {
+		expect(focus.drive(20)).toEqual(20);
+	});
+	test.todo('[16] driving the car uses gas', () );
 	test.todo('[17] refueling allows to keep driving');
 	test.todo('[18] adding fuel to a full tank has no effect');
 });
