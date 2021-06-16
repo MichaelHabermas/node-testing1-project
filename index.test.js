@@ -182,7 +182,7 @@ describe('[Exercise 7] isEvenNumberAsync', () => {
 	});
 	test('[21] rejects an error with the message "number must be a number" if passed a non-number type', () => {
 		expect.assertions(1);
-		return expect(utils.isEvenNumberAsync('foo')).rejects.toEqual({
+		return expect(utils.isEvenNumberAsync('derp')).rejects.toEqual({
 			message: 'number must be a number'
 		});
 	});
