@@ -172,12 +172,24 @@ describe('[Exercise 6] Car', () => {
 });
 
 describe('[Exercise 7] isEvenNumberAsync', () => {
-	test.todo('[19] resolves true if passed an even number');
-	test.todo('[20] resolves false if passed an odd number');
-	test.todo(
-		'[21] rejects an error with the message "number must be a number" if passed a non-number type'
-	);
-	test.todo(
-		'[22] rejects an error with the message "number must be a number" if passed NaN'
-	);
+	test('[19] resolves true if passed an even number', () => {
+		expect.assertions(1);
+		return expect(utils.isEvenNumberAsync(2)).resolves.toEqual(true);
+	});
+	test('[20] resolves false if passed an odd number', () => {
+		expect.assertions(1);
+		return expect(utils.isEvenNumberAsync(3)).resolves.toEqual(false);
+	});
+	test('[21] rejects an error with the message "number must be a number" if passed a non-number type', () => {
+		expect.assertions(1);
+		return expect(utils.isEvenNumberAsync('foo')).rejects.toEqual({
+			message: 'number must be a number'
+		});
+	});
+	test('[22] rejects an error with the message "number must be a number" if passed NaN', () => {
+		expect.assertions(1);
+		return expect(utils.isEvenNumberAsync(NaN)).rejects.toEqual({
+			message: 'number must be a number'
+		});
+	});
 });

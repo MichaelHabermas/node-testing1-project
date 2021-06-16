@@ -204,6 +204,15 @@ class Car {
  */
 function isEvenNumberAsync(number) {
 	// ✨ implement
+	return new Promise((resolve, reject) => {
+		if (typeof number !== 'number' || isNaN(number)) {
+			reject({ message: 'number must be a number' });
+		} else {
+			// number % 2 === 0 ? resolve(true) : resolve(false);
+			const res = number % 2 === 0;
+			resolve(res);
+		}
+	});
 }
 
 module.exports = {
