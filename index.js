@@ -47,9 +47,12 @@ function findLargestInteger(integers) {
 	// ✨ implement
 	let largestNum = integers[0]['integer'];
 	integers.forEach(kvp => {
-		console.log('ForEach: ', kvp['integer']);
+		if (kvp['integer'] > largestNum) {
+			largestNum = kvp['integer'];
+		}
 	});
-	console.log(largestNum);
+	// console.log('largestNum: ', largestNum);
+	return largestNum;
 }
 
 class Counter {
