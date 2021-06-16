@@ -126,8 +126,8 @@ class Car {
 	 */
 	constructor(name, tankSize, mpg) {
 		this.name = name;
-		this.odometer = 0; // car initilizes with zero miles
-		this.tank = tankSize; // car initiazes full of gas
+		this.odometer = 0; // car initializes with zero miles
+		this.tank = tankSize; // car initializes full of gas
 		// ✨ initialize whatever other properties are needed
 		this.currentGas = tankSize;
 		this.mpg = mpg;
@@ -149,13 +149,19 @@ class Car {
 
 	drive(distance) {
 		const possibleDrivingDistance = this.currentGas * this.mpg;
+		if (this.currentGas <= 0) {
+			this.currentGas = 0;
+			return `${this.odometer} (no distance driven as tank is empty)`;
+		}
 		if (distance <= possibleDrivingDistance) {
 			this.currentGas -= distance / this.mpg;
 			return (this.odometer += distance);
 			// return this.odometer;
 		} else {
 			this.currentGas = 0;
-			return (this.odometer += possibleDrivingDistance);
+			this.odometer += possibleDrivingDistance;
+			// return (this.odometer += possibleDrivingDistance);
+			return `${this.odometer} (ran out of gas after ${possibleDrivingDistance} miles)`;
 		}
 
 		// ✨ implement
@@ -174,10 +180,10 @@ class Car {
 	 */
 	refuel(gallons) {
 		// ✨ implement
-		if (gallons <= 0) return;
+		if (gallons <= 0) return 0;
 		if (gallons >= this.tank - this.currentGas) {
 			this.currentGas = this.tank;
-			return;
+			return `${this.odometer} (tank only holds ${this.tank})`;
 		}
 		this.currentGas += gallons;
 	}
