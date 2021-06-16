@@ -10,10 +10,10 @@ function trimProperties(obj) {
 	// ✨ implement
 	const newObj = {};
 	for (const key in obj) {
-		console.log(`${key}: ${obj[key]}`);
+		// console.log(`${key}: ${obj[key]}`);
 		newObj[key] = obj[key].trim();
 	}
-	console.log('obj: ', obj);
+	// console.log('obj: ', obj);
 	return newObj;
 }
 
@@ -27,6 +27,12 @@ function trimProperties(obj) {
  */
 function trimPropertiesMutation(obj) {
 	// ✨ implement
+	// console.log('Before obj: ', obj);
+	for (const key in obj) {
+		obj[key] = obj[key].trim();
+	}
+	// console.log('After obj: ', obj);
+	return obj;
 }
 
 /**
@@ -39,6 +45,11 @@ function trimPropertiesMutation(obj) {
  */
 function findLargestInteger(integers) {
 	// ✨ implement
+	let largestNum = integers[0]['integer'];
+	integers.forEach(kvp => {
+		console.log('ForEach: ', kvp['integer']);
+	});
+	console.log(largestNum);
 }
 
 class Counter {
