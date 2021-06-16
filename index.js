@@ -146,21 +146,16 @@ class Car {
 	 * focus.drive(200) // returns 500
 	 * focus.drive(200) // returns 600 (ran out of gas after 100 miles)
 	 */
-	fill(gallons) {
-		if (gallons <= 0) return;
-		if (gallons >= this.tank - this.currentGas) {
-			this.currentGas = this.tank;
-			return;
-		}
-		this.tank = +gallons;
-	}
 
 	drive(distance) {
 		const possibleDrivingDistance = this.currentGas * this.mpg;
-		if (distance < possibleDrivingDistance) {
+		if (distance <= possibleDrivingDistance) {
 			this.currentGas -= distance / this.mpg;
-			this.odometer += distance;
-			return this.odometer;
+			return (this.odometer += distance);
+			// return this.odometer;
+		} else {
+			this.currentGas = 0;
+			return (this.odometer += possibleDrivingDistance);
 		}
 
 		// ✨ implement
@@ -179,6 +174,12 @@ class Car {
 	 */
 	refuel(gallons) {
 		// ✨ implement
+		if (gallons <= 0) return;
+		if (gallons >= this.tank - this.currentGas) {
+			this.currentGas = this.tank;
+			return;
+		}
+		this.tank = +gallons;
 	}
 }
 
