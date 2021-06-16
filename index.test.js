@@ -169,26 +169,26 @@ describe('[Exercise 6] Car', () => {
 	});
 	test('[16] driving the car uses gas', () => {
 		focus.drive(30);
-		expect(focus.currentGas).toEqual(19);
+		expect(focus.fuel).toEqual(19);
 	});
 	test('[17] refueling allows to keep driving', () => {
 		focus.drive(600);
 		expect(focus.odometer).toEqual(600);
-		expect(focus.currentGas).toEqual(0);
+		expect(focus.fuel).toEqual(0);
 		focus.drive(500);
 		expect(focus.odometer).toEqual(600);
-		expect(focus.currentGas).toEqual(0);
+		expect(focus.fuel).toEqual(0);
 		focus.refuel(20);
 		focus.drive(400);
 		expect(focus.odometer).toEqual(1000);
 	});
 	test('[18] adding fuel to a full tank has no effect', () => {
 		focus.refuel(5);
-		expect(focus.currentGas).toEqual(20);
+		expect(focus.fuel).toEqual(20);
 		focus.drive(450);
-		expect(focus.currentGas).toEqual(5);
+		expect(focus.fuel).toEqual(5);
 		focus.refuel(1000);
-		expect(focus.currentGas).toEqual(20);
+		expect(focus.fuel).toEqual(20);
 	});
 });
 
