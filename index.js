@@ -179,7 +179,7 @@ class Car {
 			this.currentGas = this.tank;
 			return;
 		}
-		this.currentGas = +gallons;
+		this.currentGas += gallons;
 	}
 }
 
