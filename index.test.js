@@ -1,5 +1,19 @@
 const utils = require('./index');
 
+test('sanity', () => {
+	// test
+	expect(true).not.toBe(false); // assertion
+	expect(1 + 2).toBe(3); // another assertion
+	expect('foo').toHaveLength(3); // toHaveLength is a "matcher"
+	expect(false).toBeFalsy(); // toBeFalsy is another "matcher"
+	const o = {};
+	const oo = o;
+	expect(o).toBe(oo);
+	expect({}).not.toBe({});
+	const obj = { a: 1 };
+	expect(obj).toEqual({ a: 1 });
+});
+
 describe('[Exercise 1] trimProperties', () => {
 	test('[1] returns an object with the properties trimmed', () => {
 		// EXAMPLE
@@ -10,10 +24,13 @@ describe('[Exercise 1] trimProperties', () => {
 	});
 	test('[2] returns a copy, leaving the original object intact', () => {
 		const original = { foo: '  foo ', bar: 'bar ', baz: ' baz' };
+		const copy = original;
+		expect(original).toBe(copy);
 		const created = { foo: 'foo', bar: 'bar', baz: 'baz' };
 		const actual = utils.trimProperties(original);
 		expect(actual).toEqual(created);
 		expect(original).toEqual({ foo: '  foo ', bar: 'bar ', baz: ' baz' });
+		expect(original).toBe(copy);
 	});
 });
 
@@ -26,10 +43,14 @@ describe('[Exercise 2] trimPropertiesMutation', () => {
 	});
 	test('[4] the object returned is the exact same one we passed in', () => {
 		const original = { foo: '  foo ', bar: 'bar ', baz: ' baz' };
+		const copy = original;
+		expect(original).toBe(copy);
 		const created = { foo: 'foo', bar: 'bar', baz: 'baz' };
-		const actual = utils.trimPropertiesMutation(original);
+		const actual = utils.trimProperties(original);
 		expect(actual).toEqual(created);
-		expect(actual).toEqual(original);
+		// expect(original).toEqual({ foo: '  foo ', bar: 'bar ', baz: ' baz' });
+		expect(copy).toBe(original);
+		// expect(actual).toEqual(copy);
 	});
 });
 
