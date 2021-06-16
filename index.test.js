@@ -24,13 +24,12 @@ describe('[Exercise 1] trimProperties', () => {
 	});
 	test('[2] returns a copy, leaving the original object intact', () => {
 		const original = { foo: '  foo ', bar: 'bar ', baz: ' baz' };
-		const copy = original;
-		expect(original).toBe(copy);
+		const copy = { ...original };
+		expect(original).toEqual(copy);
 		const created = { foo: 'foo', bar: 'bar', baz: 'baz' };
 		const actual = utils.trimProperties(original);
 		expect(actual).toEqual(created);
 		expect(original).toEqual({ foo: '  foo ', bar: 'bar ', baz: ' baz' });
-		expect(original).toBe(copy);
 	});
 });
 
@@ -42,15 +41,10 @@ describe('[Exercise 2] trimPropertiesMutation', () => {
 		expect(actual).toEqual(expected);
 	});
 	test('[4] the object returned is the exact same one we passed in', () => {
-		const original = { foo: '  foo ', bar: 'bar ', baz: ' baz' };
-		const copy = original;
-		expect(original).toBe(copy);
-		const created = { foo: 'foo', bar: 'bar', baz: 'baz' };
-		const actual = utils.trimProperties(original);
-		expect(actual).toEqual(created);
-		// expect(original).toEqual({ foo: '  foo ', bar: 'bar ', baz: ' baz' });
-		expect(copy).toBe(original);
-		// expect(actual).toEqual(copy);
+		const input = { foo: '  foo ', bar: 'bar ', baz: ' baz' };
+		const expected = { foo: 'foo', bar: 'bar', baz: 'baz' };
+		const actual = utils.trimPropertiesMutation(input);
+		expect(input).toEqual(actual);
 	});
 });
 
