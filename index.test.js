@@ -62,20 +62,28 @@ describe('[Exercise 4] Counter', () => {
 		counter = new utils.Counter(3); // each test must start with a fresh couter
 	});
 	test('[6] the FIRST CALL of counter.countDown returns the initial count', () => {
-		expect(counter.countDown()).toEqual(3);
+		let count;
+		const requiredNumOfCalls = 1;
+		for (let i = 0; i < requiredNumOfCalls; i++) {
+			count = counter.countDown();
+		}
+		expect(count).toEqual(3);
 	});
 	test('[7] the SECOND CALL of counter.countDown returns the initial count minus one', () => {
-		counter.countDown();
-		expect(counter.countDown()).toEqual(2);
+		let count;
+		const requiredNumOfCalls = 2;
+		for (let i = 0; i < requiredNumOfCalls; i++) {
+			count = counter.countDown();
+		}
+		expect(count).toEqual(2);
 	});
 	test('[8] the count eventually reaches zero but does not go below zero', () => {
-		counter.countDown();
-		counter.countDown();
-		counter.countDown();
-		counter.countDown();
-		counter.countDown();
-		counter.countDown();
-		expect(counter.countDown()).toEqual(0);
+		let count;
+		const requiredNumOfCalls = 6;
+		for (let i = 0; i < requiredNumOfCalls; i++) {
+			count = counter.countDown();
+		}
+		expect(count).toEqual(0);
 	});
 });
 
@@ -85,71 +93,52 @@ describe('[Exercise 5] Seasons', () => {
 		seasons = new utils.Seasons(); // each test must start with fresh seasons
 	});
 	test('[9] the FIRST call of seasons.next returns "summer"', () => {
-		expect(seasons.next()).toEqual('summer');
+		let season;
+		const requiredNumOfCalls = 1;
+		for (let i = 0; i < requiredNumOfCalls; i++) {
+			season = seasons.next();
+		}
+		expect(season).toEqual('summer');
 	});
 	test('[10] the SECOND call of seasons.next returns "fall"', () => {
-		seasons.next();
-		expect(seasons.next()).toEqual('fall');
+		let season;
+		const requiredNumOfCalls = 2;
+		for (let i = 0; i < requiredNumOfCalls; i++) {
+			season = seasons.next();
+		}
+		expect(season).toEqual('fall');
 	});
 	test('[11] the THIRD call of seasons.next returns "winter"', () => {
-		seasons.next();
-		seasons.next();
-		expect(seasons.next()).toEqual('winter');
+		let season;
+		const requiredNumOfCalls = 3;
+		for (let i = 0; i < requiredNumOfCalls; i++) {
+			season = seasons.next();
+		}
+		expect(season).toEqual('winter');
 	});
 	test('[12] the FOURTH call of seasons.next returns "spring"', () => {
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		expect(seasons.next()).toEqual('spring');
+		let season;
+		const requiredNumOfCalls = 4;
+		for (let i = 0; i < requiredNumOfCalls; i++) {
+			season = seasons.next();
+		}
+		expect(season).toEqual('spring');
 	});
 	test('[13] the FIFTH call of seasons.next returns again "summer"', () => {
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		expect(seasons.next()).toEqual('summer');
+		let season;
+		const requiredNumOfCalls = 5;
+		for (let i = 0; i < requiredNumOfCalls; i++) {
+			season = seasons.next();
+		}
+		expect(season).toEqual('summer');
 	});
 	test('[14] the 40th call of seasons.next returns "spring"', () => {
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		seasons.next(); // 5
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		seasons.next(); // 10
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		seasons.next(); // 5
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		seasons.next(); // 20
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		seasons.next(); // 5
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		seasons.next(); // 30
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		seasons.next(); // 5
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		seasons.next();
-		expect(seasons.next()).toEqual('spring');
+		let season;
+		const requiredNumOfCalls = 40;
+		for (let i = 0; i < requiredNumOfCalls; i++) {
+			season = seasons.next();
+		}
+		expect(season).toEqual('spring');
 	});
 });
 
